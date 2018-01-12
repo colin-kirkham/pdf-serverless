@@ -1,0 +1,22 @@
+{
+  "name": "pdf-serverless",
+  "version": "1.0.0",
+  "description": "A simple project to prove out the interaction between PDF files and Serverless",
+  "main": "app.js",
+  "author": "Colin Kirkham",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "serverless-http": "^1.5.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-plugin-custom-binary": "^1.1.0"
+  }
+}
