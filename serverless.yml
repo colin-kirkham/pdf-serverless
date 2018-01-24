@@ -5,6 +5,7 @@ provider:
   runtime: nodejs6.10
   stage: dev
   region: us-east-1
+  deploymentBucket: projectx-lambda-upload
 
 plugins:
   - serverless-apigw-binary
@@ -13,12 +14,16 @@ custom:
   apigwBinary:
     types:
       - 'application/pdf'
+      - 'image/png'
 
 functions:
-  app:
-    handler: app.handler
+  pdfHandler:
+    handler: app.pdfHandler
     events:
-      - http: ANY /
+      - http: GET /pdf
         contentHandling: CONVERT_TO_BINARY
-      - http: 'ANY {proxy+}'
+  pngHandler:
+    handler: app.pngHandler
+    events:
+      - http: GET /png
         contentHandling: CONVERT_TO_BINARY
