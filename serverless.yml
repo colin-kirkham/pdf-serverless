@@ -7,17 +7,12 @@ provider:
   region: us-east-1
 
 plugins:
-  # - serverless-apigw-binary
-  - serverless-plugin-custom-binary
+  - serverless-apigw-binary
 
 custom:
-  # apigwBinary:
-  #   types:
-  #     - 'application/pdf'
-  apigatewayBinary:
+  apigwBinary:
     types:
       - 'application/pdf'
-
 
 functions:
   app:
