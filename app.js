@@ -1,18 +1,12 @@
-const express = require('express')
-const serverless = require('serverless-http')
 const fs = require('fs')
-const app = express()
 
-app.get('/static-pdf', (req, res) => {
-  let data = fs.readFileSync('test.pdf')
-  res.contentType('application/pdf')
-  res.send(data)
-})
-
-module.exports.handler = serverless(app, {
-  binary: ['application/pdf']
-})
-
-// module.exports.handler = serverless(app)
-
-// app.listen(3000)
+module.exports.handler = function (event, context, callback) {
+  const data = fs.readFileSync('test.pdf')
+  const body = Buffer.from(data).toString('base64')
+  callback(null, {
+    isBase64Encoded: true,
+    statusCode: 200,
+    headers: { 'content-type': 'application/pdf', 'content-length': body.length },
+    body
+  })
+}
